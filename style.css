@@ -45,13 +45,16 @@ h1 {
 /* Input Container Styling */
 .input-container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column; /* Stack vertically on smaller screens */
   gap: 10px;
   margin-bottom: 20px;
 }
 
+.input-container > * {
+  width: 100%; /* Full width on smaller screens */
+}
+
 input[type="text"] {
-  flex: 3;
   padding: 12px;
   border: 2px solid #ccc;
   border-radius: 5px;
@@ -66,7 +69,6 @@ input[type="text"]:focus {
 }
 
 select {
-  flex: 2;
   padding: 12px;
   border: 2px solid #ccc;
   border-radius: 5px;
@@ -76,7 +78,6 @@ select {
 }
 
 button {
-  flex: 1;
   background-color: #3dd1ca;
   color: white;
   border: none;
@@ -154,13 +155,12 @@ li.task:hover {
 /* Controls Styling */
 .controls {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column; /* Stack vertically on smaller screens */
+  gap: 10px;
   margin-top: 20px;
 }
 
 .controls button {
-  flex: 1;
-  margin: 0 5px;
   padding: 12px;
   background: #4a90e2;
   color: white;
@@ -177,12 +177,13 @@ li.task:hover {
 /* Filter and Sort Styling */
 .filter-sort-container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column; /* Stack vertically on smaller screens */
+  gap: 10px;
   margin-top: 20px;
 }
 
 .filter-sort-container select {
-  width: 48%;
+  width: 100%; /* Full width on smaller screens */
   padding: 12px;
   border: 2px solid #ccc;
   border-radius: 5px;
@@ -194,4 +195,24 @@ li.task:hover {
 
 .filter-sort-container select:hover {
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  /* For tablets and larger screens */
+  .input-container {
+    flex-direction: row; /* Horizontal layout */
+  }
+
+  .filter-sort-container {
+    flex-direction: row; /* Horizontal layout */
+  }
+
+  .filter-sort-container select {
+    width: 48%; /* Adjust width for horizontal layout */
+  }
+
+  .controls {
+    flex-direction: row; /* Horizontal layout */
+  }
 }
